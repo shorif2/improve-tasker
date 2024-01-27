@@ -31,15 +31,27 @@ export default function TaskArea() {
 
   function handleAddTask(e, newTask, isAdd) {
     e.preventDefault();
-    dispatch({
-      type: "ADD_TASK",
-      payload: {
-        task: newTask,
-        isAdd: isAdd,
-      },
-    });
-    toast.success(`Task Added Successfully !!`);
-    handleClose();
+
+    if (
+      newTask.title === "" ||
+      newTask.description === "" ||
+      newTask.priority === ""
+    ) {
+      toast.error("Input field not be empty");
+      return;
+    } else {
+      dispatch({
+        type: "ADD_TASK",
+        payload: {
+          task: newTask,
+          isAdd: isAdd,
+        },
+      });
+      toast.success(
+        `${isAdd ? "Task Added Successfully" : "Task Update Successfully"} !!`
+      );
+      handleClose();
+    }
   }
 
   function handEditTask(task) {
