@@ -10,6 +10,7 @@ export default function TaskArea() {
 
   const [toUpdate, setToUpdate] = useState(null);
   const { state, dispatch } = useContext(TaskContext);
+  const [filter, setFilter] = useState(null);
 
   function handleDelete(taskId) {
     const confirm = window.alert(`Click "OK" to Delete`);
@@ -62,12 +63,11 @@ export default function TaskArea() {
   function handleSearch(e, searchTerm) {
     e.preventDefault();
 
-    dispatch({
-      type: "Search",
-      payload: {
-        searchTerm,
-      },
-    });
+    setFilter(
+      state.taskList.filter((item) =>
+        item.title.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
   }
 
   function handleClose() {
@@ -97,7 +97,11 @@ export default function TaskArea() {
               No Tasks Found. Please Add One.
             </p>
           ) : (
-            <TasksView onDelete={handleDelete} onEdit={handEditTask} />
+            <TasksView
+              onDelete={handleDelete}
+              onEdit={handEditTask}
+              filter={filter}
+            />
           )}
         </div>
       </div>

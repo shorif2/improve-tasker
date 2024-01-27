@@ -42,15 +42,6 @@ const taskReducer = (state, action) => {
           ),
         };
       }
-
-    case "Search":
-      return {
-        taskList: state.taskList.filter((task) =>
-          task.title
-            .toLowerCase()
-            .includes(action.payload.searchTerm.toLowerCase())
-        ),
-      };
     case "Favourite":
       return {
         ...state,
