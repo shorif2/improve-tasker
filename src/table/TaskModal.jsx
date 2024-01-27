@@ -27,6 +27,7 @@ export default function TaskModal({ onClose, onTaskAdd, taskToUpdate }) {
       [name]: value,
     });
   }
+  const start = <span className="text-[14px]">*</span>;
 
   return (
     <>
@@ -52,7 +53,7 @@ export default function TaskModal({ onClose, onTaskAdd, taskToUpdate }) {
               required
             />
             {task.title == "" ? (
-              <p className="text-sm text-red-500">Title is required</p>
+              <p className="text-sm text-red-500">Title is required {start}</p>
             ) : (
               ""
             )}
@@ -70,7 +71,9 @@ export default function TaskModal({ onClose, onTaskAdd, taskToUpdate }) {
               required
             ></textarea>
             {task.description == "" ? (
-              <p className="text-sm text-red-500">Description is required</p>
+              <p className="text-sm text-red-500">
+                Description is required {start}
+              </p>
             ) : (
               ""
             )}
@@ -90,7 +93,7 @@ export default function TaskModal({ onClose, onTaskAdd, taskToUpdate }) {
                 required
               />
               {task.tags == "" ? (
-                <p className="text-sm text-red-500">Tags is required</p>
+                <p className="text-sm text-red-500">Tags is required {start}</p>
               ) : (
                 ""
               )}
@@ -112,7 +115,9 @@ export default function TaskModal({ onClose, onTaskAdd, taskToUpdate }) {
                 <option value="High">High</option>
               </select>
               {task.priority == "" ? (
-                <p className="text-sm text-red-500">Priority is required</p>
+                <p className="text-sm text-red-500">
+                  Priority is required {start}
+                </p>
               ) : (
                 ""
               )}
