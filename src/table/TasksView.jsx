@@ -3,25 +3,8 @@ import { TaskContext } from "../contexts";
 import TaskItems from "./TaskItems";
 
 export default function TasksView({ filter, onDelete, onEdit }) {
-  const { state, dispatch } = useContext(TaskContext);
-  function handleFav(favID) {
-    dispatch({
-      type: "Favourite",
-      payload: {
-        favID: favID,
-      },
-    });
-  }
+  const { state } = useContext(TaskContext);
 
-  // Generate Random color
-  const generateRandomColor = () => {
-    const letters = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  };
   return (
     <div className="overflow-auto">
       <table className="table-fixed overflow-auto xl:w-full">
@@ -52,9 +35,21 @@ export default function TasksView({ filter, onDelete, onEdit }) {
         </thead>
         <tbody>
           {filter
-            ? filter.map((task) => <TaskItems key={task.id} task={task} />)
+            ? filter.map((task) => (
+                <TaskItems
+                  key={task.id}
+                  task={task}
+                  onDelete={onDelete}
+                  onEdit={onEdit}
+                />
+              ))
             : state.taskList.map((task) => (
-                <TaskItems key={task.id} task={task} />
+                <TaskItems
+                  key={task.id}
+                  task={task}
+                  onDelete={onDelete}
+                  onEdit={onEdit}
+                />
               ))}
         </tbody>
       </table>

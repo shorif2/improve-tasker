@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { FaStar } from "react-icons/fa";
 import { TaskContext } from "../contexts";
 
-export default function TaskItems({ task }) {
+export default function TaskItems({ task, onDelete, onEdit }) {
   const { state, dispatch } = useContext(TaskContext);
   function handleFav(favID) {
     dispatch({
