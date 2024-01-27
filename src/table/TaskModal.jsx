@@ -13,9 +13,6 @@ export default function TaskModal({ onClose, onTaskAdd, taskToUpdate }) {
   );
 
   const [isAdd, setIsAdd] = useState(Object.is(taskToUpdate, null));
-  const [error, setError] = useState("");
-
-  let newTask = {};
 
   function handleChange(e) {
     const name = e.target.name;
@@ -29,22 +26,6 @@ export default function TaskModal({ onClose, onTaskAdd, taskToUpdate }) {
       ...task,
       [name]: value,
     });
-    errorChecking();
-    console.log(error);
-  }
-
-  function errorChecking() {
-    if (
-      task.title === "" ||
-      task.description === "" ||
-      task.priority === "" ||
-      task.tags === ""
-    ) {
-      setError("input field not be empty");
-    } else {
-      setError("");
-      newTask = task;
-    }
   }
 
   return (
@@ -70,6 +51,11 @@ export default function TaskModal({ onClose, onTaskAdd, taskToUpdate }) {
               onChange={handleChange}
               required
             />
+            {task.title == "" ? (
+              <p className="text-sm text-red-500">Title is required</p>
+            ) : (
+              ""
+            )}
           </div>
           {/*description */}
           <div className="space-y-2 lg:space-y-3">
@@ -83,6 +69,11 @@ export default function TaskModal({ onClose, onTaskAdd, taskToUpdate }) {
               onChange={handleChange}
               required
             ></textarea>
+            {task.description == "" ? (
+              <p className="text-sm text-red-500">Description is required</p>
+            ) : (
+              ""
+            )}
           </div>
           {/*input group */}
           <div className="grid-cols-2 gap-x-4 max-md:space-y-9 md:grid lg:gap-x-10 xl:gap-x-20">
@@ -98,6 +89,11 @@ export default function TaskModal({ onClose, onTaskAdd, taskToUpdate }) {
                 onChange={handleChange}
                 required
               />
+              {task.tags == "" ? (
+                <p className="text-sm text-red-500">Tags is required</p>
+              ) : (
+                ""
+              )}
             </div>
             {/*priority */}
             <div className="space-y-2 lg:space-y-3">
@@ -115,9 +111,14 @@ export default function TaskModal({ onClose, onTaskAdd, taskToUpdate }) {
                 <option value="Medium">Medium</option>
                 <option value="High">High</option>
               </select>
+              {task.priority == "" ? (
+                <p className="text-sm text-red-500">Priority is required</p>
+              ) : (
+                ""
+              )}
             </div>
           </div>
-          <p className="font-medium text-red-600 text-center">{error}</p>
+          <p className="text-xl font-medium text-red-600 text-center"></p>
         </div>
         {/*inputs ends */}
         <div className="mt-16 flex justify-between lg:mt-20">

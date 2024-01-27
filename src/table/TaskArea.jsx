@@ -63,11 +63,15 @@ export default function TaskArea() {
   function handleSearch(e, searchTerm) {
     e.preventDefault();
 
-    setFilter(
-      state.taskList.filter((item) =>
-        item.title.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    );
+    if (searchTerm) {
+      setFilter(
+        state.taskList.filter((item) =>
+          item.title.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      );
+    } else {
+      setFilter(null);
+    }
   }
 
   function handleClose() {
