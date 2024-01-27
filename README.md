@@ -1,8 +1,7 @@
-# React + Vite
+# Tasker Lite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This website my your daily task. You can made your easy to manage you daily task here
 
-Currently, two official plugins are available:
+Follow the link to visit the website:-
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Click here: [Tasker Lite](https://improve-tasker-lite.vercel.app/)
